@@ -1,0 +1,50 @@
+<RCC>
+  <qresource prefix="add_icon">
+    <file>icons8-add-24.png</file>
+  </qresource>
+  <qresource prefix="folder_icon">
+    <file>icons8-folder-24.png</file>
+  </qresource>
+  <qresource prefix="info_button">
+    <file>icons8-help-24.png</file>
+  </qresource>
+  <qresource prefix="enter_icon">
+    <file>icons8-next-page-24.png</file>
+  </qresource>
+  <qresource prefix="correct_icon">
+    <file>icons8-approval-24.png</file>
+  </qresource>
+  <qresource prefix="incorrect_icon">
+    <file>icons8-close-window-24.png</file>
+  </qresource>
+  <qresource prefix="statistic_icon">
+    <file>icons8-graph-24.png</file>
+  </qresource>
+  <qresource prefix="delete_icon">
+    <file>icons8-remove-24.png</file>
+  </qresource>
+  <qresource prefix="test_icon">
+    <file>icons8-pass-fail-24.png</file>
+  </qresource>
+  <qresource prefix="cancel_search">
+    <file>cancel_search.png</file>
+  </qresource>
+  <qresource prefix="search_icon">
+    <file>icons8-find-and-replace-24.png</file>
+  </qresource>
+  <qresource prefix="load_icon">
+    <file>icons8-download-24.png</file>
+  </qresource>
+  <qresource prefix="close_icon">
+    <file>icons8-close-24.png</file>
+  </qresource>
+  <qresource prefix="edit_icon">
+    <file>icons8-edit-24.png</file>
+  </qresource>
+  <qresource prefix="save_icon">
+    <file>icons8-save-24.png</file>
+  </qresource>
+  <qresource prefix="share_icon">
+    <file>icons8-upload-24.png</file>
+  </qresource>
+</RCC>

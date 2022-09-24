@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>200</width>
+    <height>213</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Statistic</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout_3">
+    <item>
+     <widget class="QLabel" name="label">
+      <property name="font">
+       <font>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Statistic</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QLabel" name="tests_label_2">
+          <property name="text">
+           <string>Tests:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="total_pts_label_2">
+          <property name="text">
+           <string>Total points: </string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="avg_accuracy_label_2">
+          <property name="text">
+           <string>Average accuracy: </string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="total_words_label_2">
+          <property name="text">
+           <string>Total words: </string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="learned_words_label_2">
+          <property name="text">
+           <string>Learned words: </string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QLabel" name="total_pts_label">
+          <property name="text">
+           <string>0</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="tests_label">
+          <property name="text">
+           <string>0</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="avg_accuracy_label">
+          <property name="text">
+           <string>0.00%</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="total_words_label">
+          <property name="text">
+           <string>0</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="learned_words_label">
+          <property name="text">
+           <string>0/0</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QPushButton" name="export_button">
+      <property name="styleSheet">
+       <string notr="true">image: url(:/share_icon/icons8-upload-24.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources>
+  <include location="resource/src.qrc"/>
+ </resources>
+ <connections/>
+</ui>
