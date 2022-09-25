@@ -18,7 +18,8 @@ First run command in terminal:
 Or download and unpack .zip archive
 Then, to build executable for your system, install pyinstaller using command:
 
-```pip install pyinstaller```
+```pip install pyinstaller
+pip install -r requirements.txt```
 
 Finally, run this command to build executable:
 
