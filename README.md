@@ -7,7 +7,7 @@ BiLinguo is designed for learning foreign languages. Now it is being developed i
 
 #### Privacy
 
-This application is open source and absolutely free to use. I care about user's privacy so I use only open source tools and APIs to develop it.
+This application is open source and absolutely free to use. I care about user's privacy so I use only open source and free tools and APIs to develop it.
 
 #### Installation
 
