@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'create_vocab_interface.ui'
+# Form implementation generated from reading ui file 'manage_vocab_interface.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.7
 #
@@ -38,7 +38,7 @@ class Ui_MainWindow(object):
         self.delete_button.setObjectName("delete_button")
         self.horizontalLayout.addWidget(self.delete_button)
         self.create_button = QtWidgets.QPushButton(self.centralwidget)
-        self.create_button.setStyleSheet("image:url(:/enter_icon/icons8-next-page-24.png);")
+        self.create_button.setStyleSheet("image: url(:/add_icon/icons8-add-24.png);")
         self.create_button.setText("")
         self.create_button.setObjectName("create_button")
         self.horizontalLayout.addWidget(self.create_button)

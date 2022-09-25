@@ -51,7 +51,7 @@
       <item>
        <widget class="QPushButton" name="create_button">
         <property name="styleSheet">
-         <string notr="true">image:url(:/enter_icon/icons8-next-page-24.png);</string>
+         <string notr="true">image: url(:/add_icon/icons8-add-24.png);</string>
         </property>
         <property name="text">
          <string/>

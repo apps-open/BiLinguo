@@ -20,61 +20,14 @@
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_5">
         <item>
-         <layout class="QHBoxLayout" name="horizontalLayout">
-          <item>
-           <widget class="QPushButton" name="add_word_button">
-            <property name="autoFillBackground">
-             <bool>false</bool>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">image:url(:/add_icon/icons8-add-24.png)</string>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="delete_button">
-            <property name="styleSheet">
-             <string notr="true">image: url(:/delete_icon/icons8-remove-24.png);</string>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="save_button">
-            <property name="styleSheet">
-             <string notr="true">image: url(:/save_icon/icons8-save-24.png);</string>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="test_button">
-            <property name="styleSheet">
-             <string notr="true">image: url(:/test_icon/icons8-pass-fail-24.png);</string>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="info_button">
-            <property name="styleSheet">
-             <string notr="true">image: url(:/info_button/icons8-help-24.png);</string>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
-         </layout>
+         <widget class="QPushButton" name="info_button">
+          <property name="styleSheet">
+           <string notr="true">image: url(:/info_button/icons8-help-24.png);</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
         </item>
         <item>
          <widget class="Line" name="line">
@@ -132,6 +85,66 @@
          <enum>Qt::Horizontal</enum>
         </property>
        </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <property name="sizeConstraint">
+         <enum>QLayout::SetNoConstraint</enum>
+        </property>
+        <item>
+         <widget class="QPushButton" name="add_word_button">
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">image:url(:/add_icon/icons8-add-24.png)</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="delete_button">
+          <property name="styleSheet">
+           <string notr="true">image: url(:/delete_icon/icons8-remove-24.png);</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="translate_button">
+          <property name="styleSheet">
+           <string notr="true">image: url(:/translate_icon/icons8-translate-24.png);</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="save_button">
+          <property name="styleSheet">
+           <string notr="true">image: url(:/save_icon/icons8-save-24.png);</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="test_button">
+          <property name="styleSheet">
+           <string notr="true">image: url(:/test_icon/icons8-pass-fail-24.png);</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
       <item>
        <widget class="QTableWidget" name="vocabulary_table">

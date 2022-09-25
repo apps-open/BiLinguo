@@ -30,7 +30,7 @@ class Vocabulary(QMainWindow):
 		self.__db = Database(f"{home_dir}/.BiLinguo/data.db", is_install=is_install)
 		self.__msg = MessageBox()
 		self.__ui.load_button.clicked.connect(self.__show_select_vocabulary_window)
-		self.__ui.create_button.clicked.connect(self.__show_Manage_Vocabulary_window)
+		self.__ui.create_button.clicked.connect(self.__show_manage_vocabulary_window)
 		self.__ui.delete_button.clicked.connect(self.__delete_word)
 		self.__ui.add_word_button.clicked.connect(self.__word_add)
 		self.__ui.save_button.clicked.connect(self.__save_table)
@@ -39,6 +39,8 @@ class Vocabulary(QMainWindow):
 		self.__ui.clear_search.clicked.connect(self.__clear_search)
 		self.__ui.close_button.clicked.connect(self.__table_close)
 		self.__ui.info_button.clicked.connect(self.__show_about)
+		self.__ui.translate_button.clicked.connect(lambda:
+			self.__msg.show(type_=MessageBox.Information, text="This feature is unavaliable in this release.", title="Information"))
 		self.__ui.vocabulary_table.setHorizontalHeaderLabels(("Word", "Translation", "Notes"))
 		self.__ui.vocabulary_table.setColumnCount(3)
 		
@@ -88,26 +90,27 @@ class Vocabulary(QMainWindow):
 			self.__msg.show(type_=QMessageBox.Information, buttons=QMessageBox.Ok, text=text, title="Information")
 
 	def __delete_vocab(self):
-		name = self.__vocab_create.ui.vocab_edit.text()
-		text = f"Are you sure to delete table \"{name}\"? All data associated with the vocabulary will be lost!"
-		reply = self.__msg.show(type_=QMessageBox.Warning, buttons=QMessageBox.Yes | QMessageBox.No, text=text, title="Attention!")
-		if reply == QMessageBox.Yes:
-			try:
-				if name:
+		name = self.__manage_vocab.ui.vocab_edit.text()
+		if name:
+			text = f"Are you sure to delete table \"{name}\"? All data associated with the vocabulary will be lost!"
+			reply = self.__msg.show(type_=QMessageBox.Warning, buttons=QMessageBox.Yes | QMessageBox.No, text=text, title="Attention!")
+			if reply == QMessageBox.Yes:
+				try:
 					self.__db.execute(f"DROP TABLE \"{name}\"")
 					self.__db.execute(f"DELETE FROM vocabs WHERE name=\"{name}\"")
-					self.__db.execute(f"DROP TABLE \"{name}\"")
-					self.__db.execute(f"DROP TABLE \"{name}\"")
-					self.__vocab_create.fill_list()
-				else:
-					self.__msg.show(type_=QMessageBox.Warning, text=MessageText.FILL_REQUIRED_FIELDS_BEFORE_ACTION, title="Warning!")
-			except Exception as e:
-				self.__msg.show(type_=QMessageBox.Critical, err=e, text=MessageText.AN_ERROR_OCCURED_WHILE_ACTION, title="Error!")
-		self.__vocab_create.ui.vocab_edit.clear()
+					self.__manage_vocab.fill_list()
+				except Exception as e:
+					self.__msg.show(type_=QMessageBox.Critical, err=e, text=MessageText.AN_ERROR_OCCURED_WHILE_ACTION, title="Error!")
+		else:
+			self.__msg.show(type_=QMessageBox.Warning, text=MessageText.FILL_REQUIRED_FIELDS_BEFORE_ACTION, title="Warning!")
+		self.__manage_vocab.fill_list()
+		if name == self.__table:
+			self.__table_close()
+		self.__manage_vocab.ui.vocab_edit.clear()
 
-	def __manage_vocab(self):
+	def __create_vocab(self):
 		try:
-			name = self.__vocab_create.ui.vocab_edit.text()
+			name = self.__manage_vocab.ui.vocab_edit.text()
 			if name:
 				self.__db.execute(f"CREATE TABLE \"{name}\" (\"word\" TEXT NOT NULL UNIQUE, \"translation\" TEXT NOT NULL, \"notes\" TEXT)")
 				self.__db.execute(f"""CREATE TABLE \"{name}_statistic\" (
@@ -122,7 +125,7 @@ class Vocabulary(QMainWindow):
 				self.__db.execute(f"CREATE TABLE \"{name}_word_repeats\" (\"word\" TEXT NOT NULL UNIQUE, \"repeats\" INTEGER NOT NULL)")
 
 				self.__db.execute(f"INSERT INTO vocabs VALUES (\"{name}\")")
-				self.__vocab_create.fill_list()
+				self.__manage_vocab.fill_list()
 			else:
 				self.__msg.show(type_=QMessageBox.Warning, text=MessageText.FILL_REQUIRED_FIELDS_BEFORE_ACTION, title="Warning!")
 		except Exception as e:
@@ -203,39 +206,13 @@ class Vocabulary(QMainWindow):
 							self.__db.execute(request)
 							request = f"DELETE FROM \"{self.__table}_word_repeats\" WHERE word=\"{item.text()}\""
 							self.__db.execute(request)
-							self.__fill_table(request=f"SELECT * FROM \"{self.__table}\"")
 						else:
 							self.__ui.vocabulary_table.removeRow(item.row())
 			else:
 				self.__msg.show(type_=QMessageBox.Information, text=MessageText.LOAD_DICTIONARY_BEFORE_ACTION, title="Information")
+			self.__fill_table(request=f"SELECT * FROM \"{self.__table}\"")
 		except Exception as e:
 			self.__msg.show(type_=QMessageBox.Critical, err=e, text=MessageText.AN_ERROR_OCCURED_WHILE_ACTION, title="Error!")
-
-	def __word_edit(self):
-		to_search = self.__edit_word.ui.search_word_edit.text()
-		self.__edit_word.ui.search_word_edit.clear()
-		word = self.__edit_word.ui.word_edit.text()
-		self.__edit_word.ui.word_edit.clear()
-		translation = self.__edit_word.ui.translation_edit.text()
-		self.__edit_word.ui.translation_edit.clear()
-		note = self.__edit_word.ui.note_edit.document().toPlainText()
-		self.__edit_word.ui.note_edit.clear()
-		try:
-			if self.__table:
-				if to_search:
-					if word:
-						self.__db.execute(f"UPDATE \"{self.__table}\" SET word=\"{word}\" WHERE word=\"{to_search}\"")
-					if translation:
-						self.__db.execute(f"UPDATE \"{self.__table}\" SET translation=\"{translation}\" WHERE word=\"{to_search}\"")
-					if note:
-						self.__db.execute(f"UPDATE \"{self.__table}\" SET notes=\"{note}\" WHERE word=\"{to_search}\"")
-					self.__fill_table(request=f"SELECT * FROM \"{self.__table}\"")
-				else:
-					self.__msg.show(type_=QMessageBox.Information, text=MessageText.FILL_REQUIRED_FIELDS_BEFORE_ACTION, title="Information")
-			else:
-				self.__msg.show(type_=QMessageBox.Warning, text=MessageText.LOAD_DICTIONARY_BEFORE_ACTION, title="Warning!")
-		except Exception as e:
-			self.__msg.show(type_=QMessageBox.Critical, err=str(e), text=MessageText.AN_ERROR_OCCURED_WHILE_ACTION, title="Error!")
 
 	def __load_vocabulary(self):
 		try:
@@ -266,11 +243,11 @@ class Vocabulary(QMainWindow):
 		else:
 			self.__msg.show(type_=QMessageBox.Warning, text=MessageText.LOAD_DICTIONARY_BEFORE_ACTION, title="Warning!")
 
-	def __show_Manage_Vocabulary_window(self):
-		self.__vocab_create = Manage_Vocab(self.__db)
-		self.__vocab_create.ui.create_button.clicked.connect(self.__manage_vocab)
-		self.__vocab_create.ui.delete_button.clicked.connect(self.__delete_vocab)
-		self.__vocab_create.show()
+	def __show_manage_vocabulary_window(self):
+		self.__manage_vocab = Manage_Vocab(self.__db)
+		self.__manage_vocab.ui.create_button.clicked.connect(self.__create_vocab)
+		self.__manage_vocab.ui.delete_button.clicked.connect(self.__delete_vocab)
+		self.__manage_vocab.show()
 	
 	def __show_about(self):
 		self.about = About()

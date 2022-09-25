@@ -2,6 +2,9 @@
   <qresource prefix="add_icon">
     <file>icons8-add-24.png</file>
   </qresource>
+  <qresource prefix="translate_icon">
+    <file>icons8-translate-24.png</file>
+  </qresource>
   <qresource prefix="folder_icon">
     <file>icons8-folder-24.png</file>
   </qresource>
