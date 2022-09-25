@@ -16,10 +16,11 @@ First run command in terminal:
 ```git clone https://github.com/cyb3r-jamX/BiLinguo```
 
 Or download and unpack .zip archive
-Then, to build executable for your system, install pyinstaller using command:
+Then, to build executable for your system, install pyinstaller and requirements using command:
 
-```pip install pyinstaller
-pip install -r requirements.txt```
+```pip install pyinstaller```
+
+```pip install -r requirements.txt```
 
 Finally, run this command to build executable:
 
