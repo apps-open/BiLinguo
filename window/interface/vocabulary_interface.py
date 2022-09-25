@@ -15,6 +15,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(700, 525)
+        MainWindow.setStyleSheet("background:  #323232;")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
@@ -49,7 +50,7 @@ class Ui_MainWindow(object):
 "background: #424242;\n"
 "border-radius: 5px;\n"
 "border: 0px solid;\n"
-"height: 30px;}\n"
+"height: 32px;}\n"
 "*:hover {\n"
 "     height: 32px;\n"
 "      border: 1px solid white;\n"

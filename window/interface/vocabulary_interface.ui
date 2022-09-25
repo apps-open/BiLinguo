@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Vocabulary</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background:  #323232;</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
@@ -54,7 +57,7 @@ height: 32px;}
 background: #424242;
 border-radius: 5px;
 border: 0px solid;
-height: 30px;}
+height: 32px;}
 *:hover {
      height: 32px;
       border: 1px solid white;
