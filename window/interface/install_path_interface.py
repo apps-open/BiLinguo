@@ -24,16 +24,43 @@ class Ui_MainWindow(object):
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.lineEdit = QtWidgets.QLineEdit(self.centralwidget)
+        self.lineEdit.setStyleSheet("*{background: #424242;\n"
+"border-radius: 5px;\n"
+"border: 1px solid;\n"
+"height: 30px;}\n"
+"*:hover {\n"
+"     height: 32px;\n"
+"      border: 1px solid white;\n"
+"      background: #626262;\n"
+"}")
         self.lineEdit.setObjectName("lineEdit")
         self.horizontalLayout.addWidget(self.lineEdit)
         self.select_button = QtWidgets.QPushButton(self.centralwidget)
-        self.select_button.setStyleSheet("image: url(:/folder_icon/icons8-folder-24.png);")
+        self.select_button.setStyleSheet("*{image: url(:/folder_icon/icons8-folder-24.png);\n"
+"background: #424242;\n"
+"border-radius: 5px;\n"
+"border: 1px solid;\n"
+"height: 30px;}\n"
+"*:hover {\n"
+"     height: 32px;\n"
+"      border: 1px solid white;\n"
+"      background: #626262;\n"
+"}")
         self.select_button.setText("")
         self.select_button.setObjectName("select_button")
         self.horizontalLayout.addWidget(self.select_button)
         self.verticalLayout.addLayout(self.horizontalLayout)
         self.apply_button = QtWidgets.QPushButton(self.centralwidget)
-        self.apply_button.setStyleSheet("image: url(:/enter_icon/icons8-next-page-24.png);")
+        self.apply_button.setStyleSheet("*{image: url(:/enter_icon/icons8-next-page-24.png);\n"
+"background: #424242;\n"
+"border-radius: 5px;\n"
+"border: 1px solid;\n"
+"height: 30px;}\n"
+"*:hover {\n"
+"     height: 32px;\n"
+"      border: 1px solid white;\n"
+"      background: #626262;\n"
+"}")
         self.apply_button.setText("")
         self.apply_button.setObjectName("apply_button")
         self.verticalLayout.addWidget(self.apply_button)

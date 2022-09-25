@@ -65,7 +65,16 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addLayout(self.verticalLayout_2)
         self.verticalLayout_3.addLayout(self.horizontalLayout)
         self.export_button = QtWidgets.QPushButton(self.centralwidget)
-        self.export_button.setStyleSheet("image: url(:/share_icon/icons8-upload-24.png);")
+        self.export_button.setStyleSheet("*{image: url(:/share_icon/icons8-upload-24.png);\n"
+"background: #424242;\n"
+"border-radius: 5px;\n"
+"border: 0px solid;\n"
+"height: 32px;}\n"
+"*:hover {\n"
+"     height: 32px;\n"
+"      border: 1px solid white;\n"
+"      background: #626262;\n"
+"}")
         self.export_button.setText("")
         self.export_button.setObjectName("export_button")
         self.verticalLayout_3.addWidget(self.export_button)

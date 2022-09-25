@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(700, 495)
+        MainWindow.resize(700, 525)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
@@ -24,7 +24,16 @@ class Ui_MainWindow(object):
         self.horizontalLayout_5 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_5.setObjectName("horizontalLayout_5")
         self.info_button = QtWidgets.QPushButton(self.centralwidget)
-        self.info_button.setStyleSheet("image: url(:/info_button/icons8-help-24.png);")
+        self.info_button.setStyleSheet("*{image: url(:/info_button/icons8-help-24.png);\n"
+"background: #424242;\n"
+"border-radius: 5px;\n"
+"border: 0px solid;\n"
+"height: 32px;}\n"
+"*:hover {\n"
+"     height: 32px;\n"
+"      border: 1px solid white;\n"
+"      background: #626262;\n"
+"}")
         self.info_button.setText("")
         self.info_button.setObjectName("info_button")
         self.horizontalLayout_5.addWidget(self.info_button)
@@ -36,6 +45,16 @@ class Ui_MainWindow(object):
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         self.search_edit = QtWidgets.QLineEdit(self.centralwidget)
+        self.search_edit.setStyleSheet("*{background: #424242;\n"
+"background: #424242;\n"
+"border-radius: 5px;\n"
+"border: 0px solid;\n"
+"height: 30px;}\n"
+"*:hover {\n"
+"     height: 32px;\n"
+"      border: 1px solid white;\n"
+"      background: #626262;\n"
+"}")
         self.search_edit.setObjectName("search_edit")
         self.horizontalLayout_3.addWidget(self.search_edit)
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
@@ -46,12 +65,30 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.search_button.sizePolicy().hasHeightForWidth())
         self.search_button.setSizePolicy(sizePolicy)
-        self.search_button.setStyleSheet("image: url(:/enter_icon/icons8-next-page-24.png);")
+        self.search_button.setStyleSheet("*{image: url(:/enter_icon/icons8-next-page-24.png);\n"
+"background: #424242;\n"
+"border-radius: 5px;\n"
+"border: 0px solid;\n"
+"height: 32px;}\n"
+"*:hover {\n"
+"     height: 32px;\n"
+"      border: 1px solid white;\n"
+"      background: #626262;\n"
+"}")
         self.search_button.setText("")
         self.search_button.setObjectName("search_button")
         self.horizontalLayout_2.addWidget(self.search_button)
         self.clear_search = QtWidgets.QPushButton(self.centralwidget)
-        self.clear_search.setStyleSheet("image: url(:/close_icon/icons8-close-24.png);")
+        self.clear_search.setStyleSheet("*{image: url(:/close_icon/icons8-close-24.png);\n"
+"background: #424242;\n"
+"border-radius: 5px;\n"
+"border: 0px solid;\n"
+"height: 32px;}\n"
+"*:hover {\n"
+"     height: 32px;\n"
+"      border: 1px solid white;\n"
+"      background: #626262;\n"
+"}")
         self.clear_search.setText("")
         self.clear_search.setObjectName("clear_search")
         self.horizontalLayout_2.addWidget(self.clear_search)
@@ -68,32 +105,82 @@ class Ui_MainWindow(object):
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.add_word_button = QtWidgets.QPushButton(self.centralwidget)
         self.add_word_button.setAutoFillBackground(False)
-        self.add_word_button.setStyleSheet("image:url(:/add_icon/icons8-add-24.png)")
+        self.add_word_button.setStyleSheet("*{image:url(:/add_icon/icons8-add-24.png);\n"
+"background: #424242;\n"
+"border-radius: 5px;\n"
+"border: 0px solid;\n"
+"height: 32px;}\n"
+"*:hover {\n"
+"     height: 32px;\n"
+"      border: 1px solid white;\n"
+"      background: #626262;\n"
+"}")
         self.add_word_button.setText("")
         self.add_word_button.setObjectName("add_word_button")
         self.horizontalLayout.addWidget(self.add_word_button)
         self.delete_button = QtWidgets.QPushButton(self.centralwidget)
-        self.delete_button.setStyleSheet("image: url(:/delete_icon/icons8-remove-24.png);")
+        self.delete_button.setStyleSheet("*{image: url(:/delete_icon/icons8-remove-24.png);\n"
+"background: #424242;\n"
+"border-radius: 5px;\n"
+"border: 0px solid;\n"
+"height: 32px;}\n"
+"*:hover {\n"
+"     height: 32px;\n"
+"      border: 1px solid white;\n"
+"      background: #626262;\n"
+"}")
         self.delete_button.setText("")
         self.delete_button.setObjectName("delete_button")
         self.horizontalLayout.addWidget(self.delete_button)
         self.translate_button = QtWidgets.QPushButton(self.centralwidget)
-        self.translate_button.setStyleSheet("image: url(:/translate_icon/icons8-translate-24.png);")
+        self.translate_button.setStyleSheet("*{image: url(:/translate_icon/icons8-translate-24.png);\n"
+"background: #424242;\n"
+"border-radius: 5px;\n"
+"border: 0px solid;\n"
+"height: 32px;}\n"
+"*:hover {\n"
+"     height: 32px;\n"
+"      border: 1px solid white;\n"
+"      background: #626262;\n"
+"}")
         self.translate_button.setText("")
         self.translate_button.setObjectName("translate_button")
         self.horizontalLayout.addWidget(self.translate_button)
         self.save_button = QtWidgets.QPushButton(self.centralwidget)
-        self.save_button.setStyleSheet("image: url(:/save_icon/icons8-save-24.png);")
+        self.save_button.setStyleSheet("*{image: url(:/save_icon/icons8-save-24.png);\n"
+"background: #424242;\n"
+"border-radius: 5px;\n"
+"border: 0px solid;\n"
+"height: 32px;}\n"
+"*:hover {\n"
+"     height: 32px;\n"
+"      border: 1px solid white;\n"
+"      background: #626262;\n"
+"}")
         self.save_button.setText("")
         self.save_button.setObjectName("save_button")
         self.horizontalLayout.addWidget(self.save_button)
         self.test_button = QtWidgets.QPushButton(self.centralwidget)
-        self.test_button.setStyleSheet("image: url(:/test_icon/icons8-pass-fail-24.png);")
+        self.test_button.setStyleSheet("*{image: url(:/test_icon/icons8-pass-fail-24.png);\n"
+"background: #424242;\n"
+"border-radius: 5px;\n"
+"border: 0px solid;\n"
+"height: 32px;}\n"
+"*:hover {\n"
+"     height: 32px;\n"
+"      border: 1px solid white;\n"
+"      background: #626262;\n"
+"}")
         self.test_button.setText("")
         self.test_button.setObjectName("test_button")
         self.horizontalLayout.addWidget(self.test_button)
         self.verticalLayout.addLayout(self.horizontalLayout)
         self.vocabulary_table = QtWidgets.QTableWidget(self.centralwidget)
+        self.vocabulary_table.setStyleSheet("*{background: #424242;\n"
+"background: #424242;\n"
+"border-radius: 5px;\n"
+"height: 30px;}\n"
+"")
         self.vocabulary_table.setSelectionMode(QtWidgets.QAbstractItemView.ExtendedSelection)
         self.vocabulary_table.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectItems)
         self.vocabulary_table.setObjectName("vocabulary_table")
@@ -106,25 +193,52 @@ class Ui_MainWindow(object):
         item = QtWidgets.QTableWidgetItem()
         self.vocabulary_table.setHorizontalHeaderItem(2, item)
         self.vocabulary_table.horizontalHeader().setCascadingSectionResizes(False)
-        self.vocabulary_table.horizontalHeader().setStretchLastSection(False)
+        self.vocabulary_table.horizontalHeader().setStretchLastSection(True)
         self.vocabulary_table.verticalHeader().setSortIndicatorShown(False)
         self.vocabulary_table.verticalHeader().setStretchLastSection(False)
         self.verticalLayout.addWidget(self.vocabulary_table)
         self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
         self.load_button = QtWidgets.QPushButton(self.centralwidget)
-        self.load_button.setStyleSheet("image: url(:/load_icon/icons8-download-24.png)")
+        self.load_button.setStyleSheet("*{image: url(:/load_icon/icons8-download-24.png);\n"
+"background: #424242;\n"
+"border-radius: 5px;\n"
+"border: 0px solid;\n"
+"height: 32px;}\n"
+"*:hover {\n"
+"     height: 32px;\n"
+"      border: 1px solid white;\n"
+"      background: #626262;\n"
+"}")
         self.load_button.setText("")
         self.load_button.setObjectName("load_button")
         self.horizontalLayout_4.addWidget(self.load_button)
         self.close_button = QtWidgets.QPushButton(self.centralwidget)
-        self.close_button.setStyleSheet("image: url(:/close_icon/icons8-close-24.png)")
+        self.close_button.setStyleSheet("*{image: url(:/close_icon/icons8-close-24.png);\n"
+"background: #424242;\n"
+"border-radius: 5px;\n"
+"border: 0px solid;\n"
+"height: 32px;}\n"
+"*:hover {\n"
+"     height: 32px;\n"
+"      border: 1px solid white;\n"
+"      background: #626262;\n"
+"}")
         self.close_button.setText("")
         self.close_button.setObjectName("close_button")
         self.horizontalLayout_4.addWidget(self.close_button)
         self.create_button = QtWidgets.QPushButton(self.centralwidget)
         self.create_button.setToolTipDuration(5)
-        self.create_button.setStyleSheet("image: url(:/edit_icon/icons8-edit-24.png);")
+        self.create_button.setStyleSheet("*{image: url(:/edit_icon/icons8-edit-24.png);\n"
+"background: #424242;\n"
+"border-radius: 5px;\n"
+"border: 0px solid;\n"
+"height: 32px;}\n"
+"*:hover {\n"
+"     height: 32px;\n"
+"      border: 1px solid white;\n"
+"      background: #626262;\n"
+"}")
         self.create_button.setText("")
         self.create_button.setObjectName("create_button")
         self.horizontalLayout_4.addWidget(self.create_button)

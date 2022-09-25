@@ -21,6 +21,17 @@
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
          <widget class="QLineEdit" name="lineEdit">
+          <property name="styleSheet">
+           <string notr="true">*{background: #424242;
+border-radius: 5px;
+border: 1px solid;
+height: 30px;}
+*:hover {
+     height: 32px;
+      border: 1px solid white;
+      background: #626262;
+}</string>
+          </property>
           <property name="placeholderText">
            <string>Enter path for app data...</string>
           </property>
@@ -29,7 +40,16 @@
         <item>
          <widget class="QPushButton" name="select_button">
           <property name="styleSheet">
-           <string notr="true">image: url(:/folder_icon/icons8-folder-24.png);</string>
+           <string notr="true">*{image: url(:/folder_icon/icons8-folder-24.png);
+background: #424242;
+border-radius: 5px;
+border: 1px solid;
+height: 30px;}
+*:hover {
+     height: 32px;
+      border: 1px solid white;
+      background: #626262;
+}</string>
           </property>
           <property name="text">
            <string/>
@@ -41,7 +61,16 @@
       <item>
        <widget class="QPushButton" name="apply_button">
         <property name="styleSheet">
-         <string notr="true">image: url(:/enter_icon/icons8-next-page-24.png);</string>
+         <string notr="true">*{image: url(:/enter_icon/icons8-next-page-24.png);
+background: #424242;
+border-radius: 5px;
+border: 1px solid;
+height: 30px;}
+*:hover {
+     height: 32px;
+      border: 1px solid white;
+      background: #626262;
+}</string>
         </property>
         <property name="text">
          <string/>

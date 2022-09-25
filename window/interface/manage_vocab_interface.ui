@@ -22,6 +22,12 @@
       </property>
       <item>
        <widget class="QListWidget" name="vocabs_list">
+        <property name="styleSheet">
+         <string notr="true">*{background: #424242;
+border-radius: 5px;
+border: 0px solid;
+height: 32px;}</string>
+        </property>
         <property name="selectionMode">
          <enum>QAbstractItemView::SingleSelection</enum>
         </property>
@@ -29,6 +35,17 @@
       </item>
       <item>
        <widget class="QLineEdit" name="vocab_edit">
+        <property name="styleSheet">
+         <string notr="true">*{background: #424242;
+border-radius: 5px;
+border: 0px solid;
+height: 32px;}
+*:hover {
+     height: 32px;
+      border: 1px solid white;
+      background: #626262;
+}</string>
+        </property>
         <property name="placeholderText">
          <string>Name of vocabulary... (required)</string>
         </property>
@@ -41,7 +58,16 @@
       <item>
        <widget class="QPushButton" name="delete_button">
         <property name="styleSheet">
-         <string notr="true">image: url(:/delete_icon/icons8-remove-24.png);</string>
+         <string notr="true">*{image: url(:/delete_icon/icons8-remove-24.png);
+background: #424242;
+border-radius: 5px;
+border: 0px solid;
+height: 32px;}
+*:hover {
+     height: 32px;
+      border: 1px solid white;
+      background: #626262;
+}</string>
         </property>
         <property name="text">
          <string/>
@@ -51,7 +77,16 @@
       <item>
        <widget class="QPushButton" name="create_button">
         <property name="styleSheet">
-         <string notr="true">image: url(:/add_icon/icons8-add-24.png);</string>
+         <string notr="true">*{image: url(:/add_icon/icons8-add-24.png);
+background: #424242;
+border-radius: 5px;
+border: 0px solid;
+height: 32px;}
+*:hover {
+     height: 32px;
+      border: 1px solid white;
+      background: #626262;
+}</string>
         </property>
         <property name="text">
          <string/>

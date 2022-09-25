@@ -22,11 +22,17 @@
      <height>361</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">*{background: #424242;
+border-radius: 5px;
+border: 0px solid;
+height: 32px;}</string>
+   </property>
    <property name="tabPosition">
     <enum>QTabWidget::North</enum>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>2</number>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
@@ -93,6 +99,9 @@ p, li { white-space: pre-wrap; }
        <width>641</width>
        <height>321</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
      </property>
      <property name="html">
       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;

@@ -26,6 +26,7 @@ class Test(QMainWindow):
 		self.__incorrect = 0
 		self.__all = 0
 		self.__reps = []
+		self.__is_translation = False
 		self.__ui.check_button.clicked.connect(self.__main)
 		self.__ui.statistic_button.clicked.connect(self.__show_statistic)
 		self.__load_stats()
@@ -64,26 +65,37 @@ class Test(QMainWindow):
 				try:
 					request = f"SELECT * FROM \"{self.__db.current_table}\" WHERE word=\"{self.__word}\" OR translation=\"{self.__word}\""
 					res = self.__db.fetchall(request)
-					if self.__word == res[0][0] or self.__word == res[0][1]:
-						if fuzz.partial_ratio(res[0][1], txt.lower()) > 80 or \
-							fuzz.partial_ratio(res[0][0], txt.lower()) > 80:
-							return True
-						else:
-							return False
+					if self.__is_translation and fuzz.partial_ratio(res[0][0].lower(), txt.lower()) > 80:
+						print(res[0][0].lower(), txt.lower())
+						return True
+					elif not self.__is_translation and fuzz.partial_ratio(res[0][1].lower(), txt.lower()) > 80:
+						print(res[0][1].lower(), txt.lower())
+						return True
+					else:
+						return False
 				except Exception as e:
 					self.__msg.show(type_=QMessageBox.Critical, err=e, text=MessageText.AN_ERROR_OCCURED_WHILE_ACTION, title="Error!")
 		else:
 			return False
 
 	def __get_random_word(self):
-		self.__word = None
 		if self.__db.current_table:
 			try:
-				request = f"SELECT word, translation FROM \"{self.__db.current_table}\""
-				data = self.__db.fetchall(request)
-				self.__total_words = len(data)
-				random_word = data[random.randint(0, len(data)-1)][random.randint(0, 1)]
-				self.__word = random_word
+				num = random.randint(0, 1)
+				if num == 0:
+					request = f"SELECT word FROM \"{self.__db.current_table}\""
+					data = self.__db.fetchall(request)
+					self.__total_words = len(data)
+					self.__is_translation = False
+					random_word = data[random.randint(0, len(data)-1)][0]
+					self.__word = random_word
+				else:
+					request = f"SELECT translation FROM \"{self.__db.current_table}\""
+					data = self.__db.fetchall(request)
+					self.__total_words = len(data)
+					self.__is_translation = True
+					random_word = data[random.randint(0, len(data)-1)][0]
+					self.__word = random_word
 			except Exception as e:
 				self.__msg.show(type_=QMessageBox.Critical, err=e, text=MessageText.AN_ERROR_OCCURED_WHILE_ACTION, title="Error!")
 
@@ -99,12 +111,12 @@ class Test(QMainWindow):
 					self.__word = res[0][0]
 				request = f"UPDATE \"{self.__db.current_table}_word_repeats\" SET repeats=repeats+1 WHERE word=\"{self.__word}\""
 				self.__db.execute(request)
-				self.__ui.correct_label.setStyleSheet("image: url(:/correct_icon/icons8-approval-24.png)")
+				self.__ui.check_button_2.setStyleSheet("*{image: url(:/correct_icon/icons8-approval-24.png);\nbackground: #424242;\nborder-radius: 5px;\nborder: 0px solid;\nheight: 32px;}")
 			else:
 				if self.__pts > 0:
 					self.__pts -=  1
 				self.__incorrect += 1
-				self.__ui.correct_label.setStyleSheet("image: url(:/incorrect_icon/icons8-close-24.png)")
+				self.__ui.check_button_2.setStyleSheet("*{image: url(:/incorrect_icon/icons8-close-window-24.png);\nbackground: #424242;\nborder-radius: 5px;\nborder: 0px solid;\nheight: 32px;}")
 			request = f"SELECT repeats FROM \"{self.__db.current_table}_word_repeats\" WHERE repeats>30"
 			data = self.__db.fetchall(request)
 			self.__learned_words = len(data)

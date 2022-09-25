@@ -17,6 +17,10 @@ class Ui_Dialog(object):
         Dialog.resize(670, 380)
         self.tabWidget = QtWidgets.QTabWidget(Dialog)
         self.tabWidget.setGeometry(QtCore.QRect(10, 10, 651, 361))
+        self.tabWidget.setStyleSheet("*{background: #424242;\n"
+"border-radius: 5px;\n"
+"border: 0px solid;\n"
+"height: 32px;}")
         self.tabWidget.setTabPosition(QtWidgets.QTabWidget.North)
         self.tabWidget.setObjectName("tabWidget")
         self.tab = QtWidgets.QWidget()
@@ -35,11 +39,12 @@ class Ui_Dialog(object):
         self.tab_2.setObjectName("tab_2")
         self.textBrowser_2 = QtWidgets.QTextBrowser(self.tab_2)
         self.textBrowser_2.setGeometry(QtCore.QRect(0, 0, 641, 321))
+        self.textBrowser_2.setStyleSheet("")
         self.textBrowser_2.setObjectName("textBrowser_2")
         self.tabWidget.addTab(self.tab_2, "")
 
         self.retranslateUi(Dialog)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(2)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):

@@ -19,6 +19,9 @@
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
        <widget class="QLabel" name="accuracy_label">
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
         <property name="text">
          <string>Accuracy: 100%</string>
         </property>
@@ -26,6 +29,12 @@
       </item>
       <item>
        <widget class="QProgressBar" name="accuracy_progressbar">
+        <property name="styleSheet">
+         <string notr="true">*{background: #424242;
+border-radius: 5px;
+border: 0px solid;
+height: 16px;}</string>
+        </property>
         <property name="value">
          <number>100</number>
         </property>
@@ -77,7 +86,16 @@
         <item>
          <widget class="QPushButton" name="statistic_button">
           <property name="styleSheet">
-           <string notr="true">image: url(:/statistic_icon/icons8-graph-24.png);</string>
+           <string notr="true">*{image: url(:/statistic_icon/icons8-graph-24.png);
+background: #424242;
+border-radius: 5px;
+border: 0px solid;
+height: 32px;}
+*:hover {
+     height: 32px;
+      border: 1px solid white;
+      background: #626262;
+}</string>
           </property>
           <property name="text">
            <string/>
@@ -86,6 +104,17 @@
         </item>
         <item>
          <widget class="QLineEdit" name="translation_edit">
+          <property name="styleSheet">
+           <string notr="true">*{background: #424242;
+border-radius: 5px;
+border: 0px solid;
+height: 32px;}
+*:hover {
+     height: 32px;
+      border: 1px solid white;
+      background: #626262;
+}</string>
+          </property>
           <property name="placeholderText">
            <string>Enter original word or translation...</string>
           </property>
@@ -97,7 +126,16 @@
            <enum>Qt::NoFocus</enum>
           </property>
           <property name="styleSheet">
-           <string notr="true">image: url(:/enter_icon/icons8-next-page-24.png);</string>
+           <string notr="true">*{image: url(:/enter_icon/icons8-next-page-24.png);
+background: #424242;
+border-radius: 5px;
+border: 0px solid;
+height: 32px;}
+*:hover {
+     height: 32px;
+      border: 1px solid white;
+      background: #626262;
+}</string>
           </property>
           <property name="text">
            <string/>
@@ -105,15 +143,19 @@
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="correct_label">
+         <widget class="QPushButton" name="check_button_2">
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">*{image: url(:/correct_icon/icons8-approval-24.png);
+background: #424242;
+border-radius: 5px;
+border: 0px solid;
+height: 32px;}</string>
+          </property>
           <property name="text">
            <string/>
-          </property>
-          <property name="pixmap">
-           <pixmap resource="resource/src.qrc">:/correct_icon/icons8-approval-24.png</pixmap>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
           </property>
          </widget>
         </item>

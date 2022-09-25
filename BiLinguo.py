@@ -1,15 +1,18 @@
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
-import os
 from window.interface.vocabulary_interface import Ui_MainWindow
+from libretranslatepy import LibreTranslateAPI
 from window.manage_vocab import Manage_Vocab
 from window.select_vocab import Select_Vocab
 from window.test import Test
-from window.message import MessageBox
-from window.script.message_text import MessageText
 from window.about import About
+from window.message import MessageBox
+from window.translate import Translate
+from window.script.message_text import MessageText
 from window.script.database import Database
+from window.translate import Translate
+import os, pyperclip
 
 
 class Vocabulary(QMainWindow):
@@ -39,15 +42,13 @@ class Vocabulary(QMainWindow):
 		self.__ui.clear_search.clicked.connect(self.__clear_search)
 		self.__ui.close_button.clicked.connect(self.__table_close)
 		self.__ui.info_button.clicked.connect(self.__show_about)
-		self.__ui.translate_button.clicked.connect(lambda:
-			self.__msg.show(type_=MessageBox.Information, text="This feature is unavaliable in this release.", title="Information"))
-		self.__ui.vocabulary_table.setHorizontalHeaderLabels(("Word", "Translation", "Notes"))
+		self.__ui.translate_button.clicked.connect(self.__show_translate_window)
 		self.__ui.vocabulary_table.setColumnCount(3)
 		
-	
 	def __clear_search(self):
 		self.__ui.search_edit.clear()
-		self.__fill_table(request=f"SELECT * FROM \"{self.__table}\"")
+		if self.__table:
+			self.__fill_table(request=f"SELECT * FROM \"{self.__table}\"")
 		
 	def __search(self):
 		to_search = self.__ui.search_edit.text()
@@ -69,12 +70,12 @@ class Vocabulary(QMainWindow):
 						text = "There is no results related to your request."
 						self.__msg.show(type_=QMessageBox.Information, text=text, title="Information")
 				else:
-					self.__msg.show(type_=QMessageBox.Warning, text=MessageText.LOAD_DICTIONARY_BEFORE_ACTION, title="Warning!")
+					self.__msg.show(type_=QMessageBox.Information, text=MessageText.LOAD_DICTIONARY_BEFORE_ACTION, title="Warning!")
 			except Exception as e:
 				self.__msg.show(type_=QMessageBox.Critical, err=e, text=MessageText.AN_ERROR_OCCURED_WHILE_ACTION, title="Error!")
 		else:
 			text = "Enter search query first!"
-			self.__msg.show(type_=QMessageBox.Warning, buttons=QMessageBox.Ok, text=text, title="Warning!")
+			self.__msg.show(type_=QMessageBox.Information, buttons=QMessageBox.Ok, text=text, title="Warning!")
 
 	def __table_close(self):
 		if self.__table:
@@ -102,7 +103,7 @@ class Vocabulary(QMainWindow):
 				except Exception as e:
 					self.__msg.show(type_=QMessageBox.Critical, err=e, text=MessageText.AN_ERROR_OCCURED_WHILE_ACTION, title="Error!")
 		else:
-			self.__msg.show(type_=QMessageBox.Warning, text=MessageText.FILL_REQUIRED_FIELDS_BEFORE_ACTION, title="Warning!")
+			self.__msg.show(type_=QMessageBox.Information, text=MessageText.FILL_REQUIRED_FIELDS_BEFORE_ACTION, title="Warning!")
 		self.__manage_vocab.fill_list()
 		if name == self.__table:
 			self.__table_close()
@@ -127,7 +128,7 @@ class Vocabulary(QMainWindow):
 				self.__db.execute(f"INSERT INTO vocabs VALUES (\"{name}\")")
 				self.__manage_vocab.fill_list()
 			else:
-				self.__msg.show(type_=QMessageBox.Warning, text=MessageText.FILL_REQUIRED_FIELDS_BEFORE_ACTION, title="Warning!")
+				self.__msg.show(type_=QMessageBox.Information, text=MessageText.FILL_REQUIRED_FIELDS_BEFORE_ACTION, title="Warning!")
 		except Exception as e:
 			self.__msg.show(type_=QMessageBox.Critical, err=e, text=MessageText.AN_ERROR_OCCURED_WHILE_ACTION, title="Error!")
 
@@ -139,15 +140,15 @@ class Vocabulary(QMainWindow):
 
 	def __save_table(self):
 		is_word_added = False
-		try:
-			if self.__table:
+		if self.__table:
+			try:
 				for row in range(self.__ui.vocabulary_table.rowCount()):
 					word = self.__ui.vocabulary_table.item(row, 0)
 					translation = self.__ui.vocabulary_table.item(row, 1)
 					note = self.__ui.vocabulary_table.item(row, 2)
 					if not note:
 						note = QTableWidgetItem("")
-					if word and translation: # and (word.text() and translation.text())
+					if word and translation:
 						request = f"SELECT word FROM \"{self.__table}\" WHERE word=\"{word.text()}\""
 						res = self.__db.fetchall(request)
 						if res and row < self.__rows:
@@ -166,11 +167,12 @@ class Vocabulary(QMainWindow):
 						self.__msg.show(type_=QMessageBox.Information, text=MessageText.FILL_REQUIRED_FIELDS_BEFORE_ACTION, title="Information")
 				if is_word_added:
 					self.__msg.show(type_=QMessageBox.Information, text=f"A new word(-s) added.", title="Congratulations!")
-			else:
-				self.__msg.show(type_=QMessageBox.Information, text=MessageText.LOAD_DICTIONARY_BEFORE_ACTION, title="Information")
+			except Exception as e:
+				self.__msg.show(type_=QMessageBox.Critical, err=e, text=MessageText.AN_ERROR_OCCURED_WHILE_ACTION, title="Error!")
+		else:
+			self.__msg.show(type_=QMessageBox.Information, text=MessageText.LOAD_DICTIONARY_BEFORE_ACTION, title="Information")
+		if self.__table:
 			self.__fill_table(f"SELECT * FROM \"{self.__table}\"")
-		except Exception as e:
-			self.__msg.show(type_=QMessageBox.Critical, err=e, text=MessageText.AN_ERROR_OCCURED_WHILE_ACTION, title="Error!")
 
 	def __fill_table(self, request="", data=None):
 		if request and not data:
@@ -194,9 +196,29 @@ class Vocabulary(QMainWindow):
 			text = f"There is no data to display because of empty SQL query response"
 			self.__msg.show(type_=QMessageBox.Information, text=text, title="Information")
 
+	def __translate_word(self):
+		word_translate = self.__translate_window.ui.phrase_edit.text()
+		translate_from = self.__translate_window.ui.translate_from.currentText()[:2]
+		translate_to = self.__translate_window.ui.translate_to.currentText()[:2]
+		if word_translate and translate_from and translate_to:
+			try:
+				output = self.__translate.translate(word_translate, translate_from, translate_to)
+				self.__translate_window.ui.output_edit.setText(output)
+			except Exception as e:
+				self.__msg.show(type_=QMessageBox.Critical, err=e, text=MessageText.AN_ERROR_OCCURED_WHILE_ACTION, title="Error!")
+		else:
+			self.__msg.show(type_=QMessageBox.Information, text=MessageText.FILL_REQUIRED_FIELDS_BEFORE_ACTION, title="Information")
+
+	
+	def __copy_translation(self):
+		if self.__translate_window.ui.output_edit.text():
+			pyperclip.copy(self.__translate_window.ui.output_edit.text())
+		else:
+			self.__msg.show(type_=QMessageBox.Information, text=f"There is no output to copy", title="Information")
+
 	def __delete_word(self):
-		try:
-			if self.__table:
+		if self.__table:
+			try:
 				for item in self.__ui.vocabulary_table.selectedItems():
 					if item.column() < 1:
 						request = f"SELECT word FROM \"{self.__table}\" WHERE word=\"{item.text()}\""
@@ -208,11 +230,12 @@ class Vocabulary(QMainWindow):
 							self.__db.execute(request)
 						else:
 							self.__ui.vocabulary_table.removeRow(item.row())
-			else:
-				self.__msg.show(type_=QMessageBox.Information, text=MessageText.LOAD_DICTIONARY_BEFORE_ACTION, title="Information")
+			except Exception as e:
+				self.__msg.show(type_=QMessageBox.Critical, err=e, text=MessageText.AN_ERROR_OCCURED_WHILE_ACTION, title="Error!")
+		else:
+			self.__msg.show(type_=QMessageBox.Information, text=MessageText.LOAD_DICTIONARY_BEFORE_ACTION, title="Information")
+		if self.__table:
 			self.__fill_table(request=f"SELECT * FROM \"{self.__table}\"")
-		except Exception as e:
-			self.__msg.show(type_=QMessageBox.Critical, err=e, text=MessageText.AN_ERROR_OCCURED_WHILE_ACTION, title="Error!")
 
 	def __load_vocabulary(self):
 		try:
@@ -230,6 +253,20 @@ class Vocabulary(QMainWindow):
 		except Exception as e:
 			self.__msg.show(type_=QMessageBox.Critical, err=e, text=MessageText.AN_ERROR_OCCURED_WHILE_ACTION, title="Error!")
 
+	def __show_translate_window(self):
+		self.__translate_window = Translate()
+		self.__translate = LibreTranslateAPI("https://translate.argosopentech.com/")
+		langs = self.__translate.languages()
+		self.__langs = {}
+		for item in langs:
+			self.__langs[f"{item['code']}"] = f"{item['name']}"
+		for k, v in self.__langs.items():
+			self.__translate_window.ui.translate_to.addItem(f"{k}: {v}")
+			self.__translate_window.ui.translate_from.addItem(f"{k}: {v}")
+		self.__translate_window.ui.translate_button.clicked.connect(self.__translate_word)
+		self.__translate_window.ui.copy_button.clicked.connect(self.__copy_translation)
+		self.__translate_window.show()
+		
 	def __show_select_vocabulary_window(self):
 		self.__select_vocab = Select_Vocab(self.__db)
 		self.__select_vocab.ui.open_button.clicked.connect(self.__load_vocabulary)
@@ -241,7 +278,7 @@ class Vocabulary(QMainWindow):
 			self.__test = Test(self.__db)
 			self.__test.show()
 		else:
-			self.__msg.show(type_=QMessageBox.Warning, text=MessageText.LOAD_DICTIONARY_BEFORE_ACTION, title="Warning!")
+			self.__msg.show(type_=QMessageBox.Information, text=MessageText.LOAD_DICTIONARY_BEFORE_ACTION, title="Warning!")
 
 	def __show_manage_vocabulary_window(self):
 		self.__manage_vocab = Manage_Vocab(self.__db)
