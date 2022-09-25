@@ -31,3 +31,9 @@ You'll find your application in the "dist" folder.
 #### Perspectives
 
 I have already added "Translate" feature, implemented new design. In the near future I am going to add such features as desktop notifications and a database import/export function. Hope you will like this applicaition. And may it help you learn new languages. Good Luck ;)
+
+#### Donations
+
+Monero: 44fVXortrNjd3Pixy91KLVhLN4zaBKhuN1GDRZX68mUAKHW8n92GNVn4GmQeS7HnqC7FqhLC3pLaceapLhDbHRHHTsH99ib
+
+Your donations helps me improve my work!
