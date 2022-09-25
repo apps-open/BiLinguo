@@ -24,10 +24,8 @@ Finally, run this command to build executable:
 
 ```pyinstaller --onefile --noconsole BiLinguo.py```
 
-You'll find your application in the "dist" folder
+You'll find your application in the "dist" folder.
+
 #### Perspectives
 
-I have already added "Translate" feature, implemented new design
-In the near future I am going to add such features as desktop notifications and a database import/export function. 
-Hope you will like this applicaition
-And may it help you learn new languages. Good Luck ;)
+I have already added "Translate" feature, implemented new design. In the near future I am going to add such features as desktop notifications and a database import/export function. Hope you will like this applicaition. And may it help you learn new languages. Good Luck ;)
