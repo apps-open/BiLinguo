@@ -36,4 +36,4 @@ I have already added "Translate" feature, implemented new design. In the near fu
 
 Monero: 44fVXortrNjd3Pixy91KLVhLN4zaBKhuN1GDRZX68mUAKHW8n92GNVn4GmQeS7HnqC7FqhLC3pLaceapLhDbHRHHTsH99ib
 
-Your donations helps me improve my work!
+#### Your donations helps me improve my work!
