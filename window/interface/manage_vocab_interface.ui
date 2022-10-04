@@ -14,7 +14,7 @@
    <string>Manage vocabularies</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background:  #323232;</string>
+   <string notr="true"></string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -26,7 +26,7 @@
       <item>
        <widget class="QListWidget" name="vocabs_list">
         <property name="styleSheet">
-         <string notr="true">*{background: #424242;
+         <string notr="true">*{
 border-radius: 5px;
 border: 0px solid;
 height: 32px;}</string>
@@ -39,14 +39,14 @@ height: 32px;}</string>
       <item>
        <widget class="QLineEdit" name="vocab_edit">
         <property name="styleSheet">
-         <string notr="true">*{background: #424242;
+         <string notr="true">*{
 border-radius: 5px;
 border: 0px solid;
 height: 32px;}
 *:hover {
      height: 32px;
       border: 1px solid white;
-      background: #626262;
+      
 }</string>
         </property>
         <property name="placeholderText">
@@ -62,14 +62,14 @@ height: 32px;}
        <widget class="QPushButton" name="delete_button">
         <property name="styleSheet">
          <string notr="true">*{image: url(:/delete_icon/icons8-remove-24.png);
-background: #424242;
+
 border-radius: 5px;
 border: 0px solid;
 height: 32px;}
 *:hover {
      height: 32px;
       border: 1px solid white;
-      background: #626262;
+      
 }</string>
         </property>
         <property name="text">
@@ -81,14 +81,14 @@ height: 32px;}
        <widget class="QPushButton" name="create_button">
         <property name="styleSheet">
          <string notr="true">*{image: url(:/add_icon/icons8-add-24.png);
-background: #424242;
+
 border-radius: 5px;
 border: 0px solid;
 height: 32px;}
 *:hover {
      height: 32px;
       border: 1px solid white;
-      background: #626262;
+      
 }</string>
         </property>
         <property name="text">

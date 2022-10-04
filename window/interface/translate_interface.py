@@ -15,7 +15,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(415, 90)
-        MainWindow.setStyleSheet("background:  #323232;")
+        MainWindow.setStyleSheet("")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
@@ -27,7 +27,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addWidget(self.label)
         self.translate_from = QtWidgets.QComboBox(self.centralwidget)
         self.translate_from.setStyleSheet("*{\n"
-"background: #424242;\n"
+"\n"
 "border-radius: 5px;\n"
 "border: 0px solid;\n"
 "height: 32px;}")
@@ -35,14 +35,14 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addWidget(self.translate_from)
         self.phrase_edit = QtWidgets.QLineEdit(self.centralwidget)
         self.phrase_edit.setStyleSheet("*{\n"
-"background: #424242;\n"
+"\n"
 "border-radius: 5px;\n"
 "border: 0px solid;\n"
 "height: 32px;}\n"
 "*:hover {\n"
 "     height: 32px;\n"
 "      border: 1px solid white;\n"
-"      background: #626262;\n"
+"      \n"
 "}")
         self.phrase_edit.setText("")
         self.phrase_edit.setObjectName("phrase_edit")
@@ -50,14 +50,14 @@ class Ui_MainWindow(object):
         self.translate_button = QtWidgets.QPushButton(self.centralwidget)
         self.translate_button.setStyleSheet("*{\n"
 "    image: url(:/translate_icon/icons8-translate-24.png);\n"
-"background: #424242;\n"
+"\n"
 "border-radius: 5px;\n"
 "border: 0px solid;\n"
 "height: 32px;}\n"
 "*:hover {\n"
 "     height: 32px;\n"
 "      border: 1px solid white;\n"
-"      background: #626262;\n"
+"      \n"
 "}")
         self.translate_button.setText("")
         self.translate_button.setObjectName("translate_button")
@@ -70,7 +70,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.addWidget(self.label_2)
         self.translate_to = QtWidgets.QComboBox(self.centralwidget)
         self.translate_to.setStyleSheet("*{\n"
-"background: #424242;\n"
+"\n"
 "border-radius: 5px;\n"
 "border: 0px solid;\n"
 "height: 32px;}\n"
@@ -79,7 +79,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.addWidget(self.translate_to)
         self.output_edit = QtWidgets.QLineEdit(self.centralwidget)
         self.output_edit.setStyleSheet("*{\n"
-"background: #424242;\n"
+"\n"
 "border-radius: 5px;\n"
 "border: 0px solid;\n"
 "height: 32px;}")
@@ -88,14 +88,14 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.addWidget(self.output_edit)
         self.copy_button = QtWidgets.QPushButton(self.centralwidget)
         self.copy_button.setStyleSheet("*{image: url(:/copy_icon/icons8-copy-24.png);\n"
-"background: #424242;\n"
+"\n"
 "border-radius: 5px;\n"
 "border: 0px solid;\n"
 "height: 32px;}\n"
 "*:hover {\n"
 "     height: 32px;\n"
 "      border: 1px solid white;\n"
-"      background: #626262;\n"
+"      \n"
 "}")
         self.copy_button.setText("")
         self.copy_button.setObjectName("copy_button")

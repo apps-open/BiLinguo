@@ -14,7 +14,7 @@
    <string>Statistic</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background:  #323232;</string>
+   <string notr="true"></string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -116,14 +116,14 @@
      <widget class="QPushButton" name="export_button">
       <property name="styleSheet">
        <string notr="true">*{image: url(:/share_icon/icons8-upload-24.png);
-background: #424242;
+
 border-radius: 5px;
 border: 0px solid;
 height: 32px;}
 *:hover {
      height: 32px;
       border: 1px solid white;
-      background: #626262;
+      
 }</string>
       </property>
       <property name="text">

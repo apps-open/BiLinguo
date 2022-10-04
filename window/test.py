@@ -111,12 +111,12 @@ class Test(QMainWindow):
 					self.__word = res[0][0]
 				request = f"UPDATE \"{self.__db.current_table}_word_repeats\" SET repeats=repeats+1 WHERE word=\"{self.__word}\""
 				self.__db.execute(request)
-				self.__ui.check_button_2.setStyleSheet("*{image: url(:/correct_icon/icons8-approval-24.png);\nbackground: #424242;\nborder-radius: 5px;\nborder: 0px solid;\nheight: 32px;}")
+				self.__ui.check_button_2.setStyleSheet("*{image: url(:/correct_icon/icons8-approval-24.png);\n\nborder-radius: 5px;\nborder: 0px solid;\nheight: 32px;}")
 			else:
 				if self.__pts > 0:
 					self.__pts -=  1
 				self.__incorrect += 1
-				self.__ui.check_button_2.setStyleSheet("*{image: url(:/incorrect_icon/icons8-close-window-24.png);\nbackground: #424242;\nborder-radius: 5px;\nborder: 0px solid;\nheight: 32px;}")
+				self.__ui.check_button_2.setStyleSheet("*{image: url(:/incorrect_icon/icons8-close-window-24.png);\n\nborder-radius: 5px;\nborder: 0px solid;\nheight: 32px;}")
 			request = f"SELECT repeats FROM \"{self.__db.current_table}_word_repeats\" WHERE repeats>30"
 			data = self.__db.fetchall(request)
 			self.__learned_words = len(data)

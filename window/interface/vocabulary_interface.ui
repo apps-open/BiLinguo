@@ -14,11 +14,11 @@
    <string>Vocabulary</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background:  #323232;</string>
+   <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <item>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_5">
@@ -26,14 +26,33 @@
          <widget class="QPushButton" name="info_button">
           <property name="styleSheet">
            <string notr="true">*{image: url(:/info_button/icons8-help-24.png);
-background: #424242;
+
 border-radius: 5px;
 border: 0px solid;
 height: 32px;}
 *:hover {
      height: 32px;
       border: 1px solid white;
-      background: #626262;
+      
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="change_theme_button">
+          <property name="styleSheet">
+           <string notr="true">*{image: url(:/change_theme_icon/icons8-change-theme-24.png);
+
+border-radius: 5px;
+border: 0px solid;
+height: 32px;}
+*:hover {
+     height: 32px;
+      border: 1px solid white;
+      
 }</string>
           </property>
           <property name="text">
@@ -53,15 +72,15 @@ height: 32px;}
           <item>
            <widget class="QLineEdit" name="search_edit">
             <property name="styleSheet">
-             <string notr="true">*{background: #424242;
-background: #424242;
+             <string notr="true">*{
+
 border-radius: 5px;
 border: 0px solid;
 height: 32px;}
 *:hover {
      height: 32px;
       border: 1px solid white;
-      background: #626262;
+      
 }</string>
             </property>
             <property name="placeholderText">
@@ -81,14 +100,14 @@ height: 32px;}
               </property>
               <property name="styleSheet">
                <string notr="true">*{image: url(:/enter_icon/icons8-next-page-24.png);
-background: #424242;
+
 border-radius: 5px;
 border: 0px solid;
 height: 32px;}
 *:hover {
      height: 32px;
       border: 1px solid white;
-      background: #626262;
+      
 }</string>
               </property>
               <property name="text">
@@ -100,14 +119,14 @@ height: 32px;}
              <widget class="QPushButton" name="clear_search">
               <property name="styleSheet">
                <string notr="true">*{image: url(:/close_icon/icons8-close-24.png);
-background: #424242;
+
 border-radius: 5px;
 border: 0px solid;
 height: 32px;}
 *:hover {
      height: 32px;
       border: 1px solid white;
-      background: #626262;
+      
 }</string>
               </property>
               <property name="text">
@@ -140,14 +159,14 @@ height: 32px;}
           </property>
           <property name="styleSheet">
            <string notr="true">*{image:url(:/add_icon/icons8-add-24.png);
-background: #424242;
+
 border-radius: 5px;
 border: 0px solid;
 height: 32px;}
 *:hover {
      height: 32px;
       border: 1px solid white;
-      background: #626262;
+      
 }</string>
           </property>
           <property name="text">
@@ -159,14 +178,14 @@ height: 32px;}
          <widget class="QPushButton" name="delete_button">
           <property name="styleSheet">
            <string notr="true">*{image: url(:/delete_icon/icons8-remove-24.png);
-background: #424242;
+
 border-radius: 5px;
 border: 0px solid;
 height: 32px;}
 *:hover {
      height: 32px;
       border: 1px solid white;
-      background: #626262;
+      
 }</string>
           </property>
           <property name="text">
@@ -178,14 +197,14 @@ height: 32px;}
          <widget class="QPushButton" name="translate_button">
           <property name="styleSheet">
            <string notr="true">*{image: url(:/translate_icon/icons8-translate-24.png);
-background: #424242;
+
 border-radius: 5px;
 border: 0px solid;
 height: 32px;}
 *:hover {
      height: 32px;
       border: 1px solid white;
-      background: #626262;
+      
 }</string>
           </property>
           <property name="text">
@@ -197,14 +216,14 @@ height: 32px;}
          <widget class="QPushButton" name="save_button">
           <property name="styleSheet">
            <string notr="true">*{image: url(:/save_icon/icons8-save-24.png);
-background: #424242;
+
 border-radius: 5px;
 border: 0px solid;
 height: 32px;}
 *:hover {
      height: 32px;
       border: 1px solid white;
-      background: #626262;
+      
 }</string>
           </property>
           <property name="text">
@@ -216,14 +235,14 @@ height: 32px;}
          <widget class="QPushButton" name="test_button">
           <property name="styleSheet">
            <string notr="true">*{image: url(:/test_icon/icons8-pass-fail-24.png);
-background: #424242;
+
 border-radius: 5px;
 border: 0px solid;
 height: 32px;}
 *:hover {
      height: 32px;
       border: 1px solid white;
-      background: #626262;
+      
 }</string>
           </property>
           <property name="text">
@@ -236,8 +255,8 @@ height: 32px;}
       <item>
        <widget class="QTableWidget" name="vocabulary_table">
         <property name="styleSheet">
-         <string notr="true">*{background: #424242;
-background: #424242;
+         <string notr="true">*{
+
 border-radius: 5px;
 height: 30px;}
 </string>
@@ -286,14 +305,14 @@ height: 30px;}
          <widget class="QPushButton" name="load_button">
           <property name="styleSheet">
            <string notr="true">*{image: url(:/load_icon/icons8-download-24.png);
-background: #424242;
+
 border-radius: 5px;
 border: 0px solid;
 height: 32px;}
 *:hover {
      height: 32px;
       border: 1px solid white;
-      background: #626262;
+      
 }</string>
           </property>
           <property name="text">
@@ -305,14 +324,14 @@ height: 32px;}
          <widget class="QPushButton" name="close_button">
           <property name="styleSheet">
            <string notr="true">*{image: url(:/close_icon/icons8-close-24.png);
-background: #424242;
+
 border-radius: 5px;
 border: 0px solid;
 height: 32px;}
 *:hover {
      height: 32px;
       border: 1px solid white;
-      background: #626262;
+      
 }</string>
           </property>
           <property name="text">
@@ -330,14 +349,14 @@ height: 32px;}
           </property>
           <property name="styleSheet">
            <string notr="true">*{image: url(:/edit_icon/icons8-edit-24.png);
-background: #424242;
+
 border-radius: 5px;
 border: 0px solid;
 height: 32px;}
 *:hover {
      height: 32px;
       border: 1px solid white;
-      background: #626262;
+      
 }</string>
           </property>
           <property name="text">

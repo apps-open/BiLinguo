@@ -14,7 +14,7 @@
    <string>Test</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background:  #323232;</string>
+   <string notr="true"></string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -33,7 +33,7 @@
       <item>
        <widget class="QProgressBar" name="accuracy_progressbar">
         <property name="styleSheet">
-         <string notr="true">*{background: #424242;
+         <string notr="true">*{
 border-radius: 5px;
 border: 0px solid;
 height: 16px;}</string>
@@ -90,14 +90,14 @@ height: 16px;}</string>
          <widget class="QPushButton" name="statistic_button">
           <property name="styleSheet">
            <string notr="true">*{image: url(:/statistic_icon/icons8-graph-24.png);
-background: #424242;
+
 border-radius: 5px;
 border: 0px solid;
 height: 32px;}
 *:hover {
      height: 32px;
       border: 1px solid white;
-      background: #626262;
+      
 }</string>
           </property>
           <property name="text">
@@ -108,14 +108,14 @@ height: 32px;}
         <item>
          <widget class="QLineEdit" name="translation_edit">
           <property name="styleSheet">
-           <string notr="true">*{background: #424242;
+           <string notr="true">*{
 border-radius: 5px;
 border: 0px solid;
 height: 32px;}
 *:hover {
      height: 32px;
       border: 1px solid white;
-      background: #626262;
+      
 }</string>
           </property>
           <property name="placeholderText">
@@ -130,14 +130,14 @@ height: 32px;}
           </property>
           <property name="styleSheet">
            <string notr="true">*{image: url(:/enter_icon/icons8-next-page-24.png);
-background: #424242;
+
 border-radius: 5px;
 border: 0px solid;
 height: 32px;}
 *:hover {
      height: 32px;
       border: 1px solid white;
-      background: #626262;
+      
 }</string>
           </property>
           <property name="text">
@@ -152,7 +152,7 @@ height: 32px;}
           </property>
           <property name="styleSheet">
            <string notr="true">*{image: url(:/correct_icon/icons8-approval-24.png);
-background: #424242;
+
 border-radius: 5px;
 border: 0px solid;
 height: 32px;}</string>

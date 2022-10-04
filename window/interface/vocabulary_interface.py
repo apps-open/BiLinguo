@@ -15,29 +15,43 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(700, 525)
-        MainWindow.setStyleSheet("background:  #323232;")
+        MainWindow.setStyleSheet("")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
-        self.gridLayout.setObjectName("gridLayout")
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.centralwidget)
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.verticalLayout = QtWidgets.QVBoxLayout()
         self.verticalLayout.setObjectName("verticalLayout")
         self.horizontalLayout_5 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_5.setObjectName("horizontalLayout_5")
         self.info_button = QtWidgets.QPushButton(self.centralwidget)
         self.info_button.setStyleSheet("*{image: url(:/info_button/icons8-help-24.png);\n"
-"background: #424242;\n"
+"\n"
 "border-radius: 5px;\n"
 "border: 0px solid;\n"
 "height: 32px;}\n"
 "*:hover {\n"
 "     height: 32px;\n"
 "      border: 1px solid white;\n"
-"      background: #626262;\n"
+"      \n"
 "}")
         self.info_button.setText("")
         self.info_button.setObjectName("info_button")
         self.horizontalLayout_5.addWidget(self.info_button)
+        self.change_theme_button = QtWidgets.QPushButton(self.centralwidget)
+        self.change_theme_button.setStyleSheet("*{image: url(:/change_theme_icon/icons8-change-theme-24.png);\n"
+"\n"
+"border-radius: 5px;\n"
+"border: 0px solid;\n"
+"height: 32px;}\n"
+"*:hover {\n"
+"     height: 32px;\n"
+"      border: 1px solid white;\n"
+"      \n"
+"}")
+        self.change_theme_button.setText("")
+        self.change_theme_button.setObjectName("change_theme_button")
+        self.horizontalLayout_5.addWidget(self.change_theme_button)
         self.line = QtWidgets.QFrame(self.centralwidget)
         self.line.setFrameShape(QtWidgets.QFrame.VLine)
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
@@ -46,15 +60,15 @@ class Ui_MainWindow(object):
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         self.search_edit = QtWidgets.QLineEdit(self.centralwidget)
-        self.search_edit.setStyleSheet("*{background: #424242;\n"
-"background: #424242;\n"
+        self.search_edit.setStyleSheet("*{\n"
+"\n"
 "border-radius: 5px;\n"
 "border: 0px solid;\n"
 "height: 32px;}\n"
 "*:hover {\n"
 "     height: 32px;\n"
 "      border: 1px solid white;\n"
-"      background: #626262;\n"
+"      \n"
 "}")
         self.search_edit.setObjectName("search_edit")
         self.horizontalLayout_3.addWidget(self.search_edit)
@@ -67,28 +81,28 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.search_button.sizePolicy().hasHeightForWidth())
         self.search_button.setSizePolicy(sizePolicy)
         self.search_button.setStyleSheet("*{image: url(:/enter_icon/icons8-next-page-24.png);\n"
-"background: #424242;\n"
+"\n"
 "border-radius: 5px;\n"
 "border: 0px solid;\n"
 "height: 32px;}\n"
 "*:hover {\n"
 "     height: 32px;\n"
 "      border: 1px solid white;\n"
-"      background: #626262;\n"
+"      \n"
 "}")
         self.search_button.setText("")
         self.search_button.setObjectName("search_button")
         self.horizontalLayout_2.addWidget(self.search_button)
         self.clear_search = QtWidgets.QPushButton(self.centralwidget)
         self.clear_search.setStyleSheet("*{image: url(:/close_icon/icons8-close-24.png);\n"
-"background: #424242;\n"
+"\n"
 "border-radius: 5px;\n"
 "border: 0px solid;\n"
 "height: 32px;}\n"
 "*:hover {\n"
 "     height: 32px;\n"
 "      border: 1px solid white;\n"
-"      background: #626262;\n"
+"      \n"
 "}")
         self.clear_search.setText("")
         self.clear_search.setObjectName("clear_search")
@@ -107,78 +121,78 @@ class Ui_MainWindow(object):
         self.add_word_button = QtWidgets.QPushButton(self.centralwidget)
         self.add_word_button.setAutoFillBackground(False)
         self.add_word_button.setStyleSheet("*{image:url(:/add_icon/icons8-add-24.png);\n"
-"background: #424242;\n"
+"\n"
 "border-radius: 5px;\n"
 "border: 0px solid;\n"
 "height: 32px;}\n"
 "*:hover {\n"
 "     height: 32px;\n"
 "      border: 1px solid white;\n"
-"      background: #626262;\n"
+"      \n"
 "}")
         self.add_word_button.setText("")
         self.add_word_button.setObjectName("add_word_button")
         self.horizontalLayout.addWidget(self.add_word_button)
         self.delete_button = QtWidgets.QPushButton(self.centralwidget)
         self.delete_button.setStyleSheet("*{image: url(:/delete_icon/icons8-remove-24.png);\n"
-"background: #424242;\n"
+"\n"
 "border-radius: 5px;\n"
 "border: 0px solid;\n"
 "height: 32px;}\n"
 "*:hover {\n"
 "     height: 32px;\n"
 "      border: 1px solid white;\n"
-"      background: #626262;\n"
+"      \n"
 "}")
         self.delete_button.setText("")
         self.delete_button.setObjectName("delete_button")
         self.horizontalLayout.addWidget(self.delete_button)
         self.translate_button = QtWidgets.QPushButton(self.centralwidget)
         self.translate_button.setStyleSheet("*{image: url(:/translate_icon/icons8-translate-24.png);\n"
-"background: #424242;\n"
+"\n"
 "border-radius: 5px;\n"
 "border: 0px solid;\n"
 "height: 32px;}\n"
 "*:hover {\n"
 "     height: 32px;\n"
 "      border: 1px solid white;\n"
-"      background: #626262;\n"
+"      \n"
 "}")
         self.translate_button.setText("")
         self.translate_button.setObjectName("translate_button")
         self.horizontalLayout.addWidget(self.translate_button)
         self.save_button = QtWidgets.QPushButton(self.centralwidget)
         self.save_button.setStyleSheet("*{image: url(:/save_icon/icons8-save-24.png);\n"
-"background: #424242;\n"
+"\n"
 "border-radius: 5px;\n"
 "border: 0px solid;\n"
 "height: 32px;}\n"
 "*:hover {\n"
 "     height: 32px;\n"
 "      border: 1px solid white;\n"
-"      background: #626262;\n"
+"      \n"
 "}")
         self.save_button.setText("")
         self.save_button.setObjectName("save_button")
         self.horizontalLayout.addWidget(self.save_button)
         self.test_button = QtWidgets.QPushButton(self.centralwidget)
         self.test_button.setStyleSheet("*{image: url(:/test_icon/icons8-pass-fail-24.png);\n"
-"background: #424242;\n"
+"\n"
 "border-radius: 5px;\n"
 "border: 0px solid;\n"
 "height: 32px;}\n"
 "*:hover {\n"
 "     height: 32px;\n"
 "      border: 1px solid white;\n"
-"      background: #626262;\n"
+"      \n"
 "}")
         self.test_button.setText("")
         self.test_button.setObjectName("test_button")
         self.horizontalLayout.addWidget(self.test_button)
         self.verticalLayout.addLayout(self.horizontalLayout)
         self.vocabulary_table = QtWidgets.QTableWidget(self.centralwidget)
-        self.vocabulary_table.setStyleSheet("*{background: #424242;\n"
-"background: #424242;\n"
+        self.vocabulary_table.setStyleSheet("*{\n"
+"\n"
 "border-radius: 5px;\n"
 "height: 30px;}\n"
 "")
@@ -202,28 +216,28 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
         self.load_button = QtWidgets.QPushButton(self.centralwidget)
         self.load_button.setStyleSheet("*{image: url(:/load_icon/icons8-download-24.png);\n"
-"background: #424242;\n"
+"\n"
 "border-radius: 5px;\n"
 "border: 0px solid;\n"
 "height: 32px;}\n"
 "*:hover {\n"
 "     height: 32px;\n"
 "      border: 1px solid white;\n"
-"      background: #626262;\n"
+"      \n"
 "}")
         self.load_button.setText("")
         self.load_button.setObjectName("load_button")
         self.horizontalLayout_4.addWidget(self.load_button)
         self.close_button = QtWidgets.QPushButton(self.centralwidget)
         self.close_button.setStyleSheet("*{image: url(:/close_icon/icons8-close-24.png);\n"
-"background: #424242;\n"
+"\n"
 "border-radius: 5px;\n"
 "border: 0px solid;\n"
 "height: 32px;}\n"
 "*:hover {\n"
 "     height: 32px;\n"
 "      border: 1px solid white;\n"
-"      background: #626262;\n"
+"      \n"
 "}")
         self.close_button.setText("")
         self.close_button.setObjectName("close_button")
@@ -231,20 +245,20 @@ class Ui_MainWindow(object):
         self.create_button = QtWidgets.QPushButton(self.centralwidget)
         self.create_button.setToolTipDuration(5)
         self.create_button.setStyleSheet("*{image: url(:/edit_icon/icons8-edit-24.png);\n"
-"background: #424242;\n"
+"\n"
 "border-radius: 5px;\n"
 "border: 0px solid;\n"
 "height: 32px;}\n"
 "*:hover {\n"
 "     height: 32px;\n"
 "      border: 1px solid white;\n"
-"      background: #626262;\n"
+"      \n"
 "}")
         self.create_button.setText("")
         self.create_button.setObjectName("create_button")
         self.horizontalLayout_4.addWidget(self.create_button)
         self.verticalLayout.addLayout(self.horizontalLayout_4)
-        self.gridLayout.addLayout(self.verticalLayout, 0, 0, 1, 1)
+        self.verticalLayout_2.addLayout(self.verticalLayout)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)

@@ -15,7 +15,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(280, 280)
-        MainWindow.setStyleSheet("background:  #323232;")
+        MainWindow.setStyleSheet("")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.centralwidget)
@@ -24,7 +24,7 @@ class Ui_MainWindow(object):
         self.verticalLayout.setSizeConstraint(QtWidgets.QLayout.SetNoConstraint)
         self.verticalLayout.setObjectName("verticalLayout")
         self.vocabs_list = QtWidgets.QListWidget(self.centralwidget)
-        self.vocabs_list.setStyleSheet("*{background: #424242;\n"
+        self.vocabs_list.setStyleSheet("*{\n"
 "border-radius: 5px;\n"
 "border: 0px solid;\n"
 "height: 32px;}")
@@ -32,14 +32,14 @@ class Ui_MainWindow(object):
         self.vocabs_list.setObjectName("vocabs_list")
         self.verticalLayout.addWidget(self.vocabs_list)
         self.vocab_edit = QtWidgets.QLineEdit(self.centralwidget)
-        self.vocab_edit.setStyleSheet("*{background: #424242;\n"
+        self.vocab_edit.setStyleSheet("*{\n"
 "border-radius: 5px;\n"
 "border: 0px solid;\n"
 "height: 32px;}\n"
 "*:hover {\n"
 "     height: 32px;\n"
 "      border: 1px solid white;\n"
-"      background: #626262;\n"
+"      \n"
 "}")
         self.vocab_edit.setObjectName("vocab_edit")
         self.verticalLayout.addWidget(self.vocab_edit)
@@ -48,28 +48,28 @@ class Ui_MainWindow(object):
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.delete_button = QtWidgets.QPushButton(self.centralwidget)
         self.delete_button.setStyleSheet("*{image: url(:/delete_icon/icons8-remove-24.png);\n"
-"background: #424242;\n"
+"\n"
 "border-radius: 5px;\n"
 "border: 0px solid;\n"
 "height: 32px;}\n"
 "*:hover {\n"
 "     height: 32px;\n"
 "      border: 1px solid white;\n"
-"      background: #626262;\n"
+"      \n"
 "}")
         self.delete_button.setText("")
         self.delete_button.setObjectName("delete_button")
         self.horizontalLayout.addWidget(self.delete_button)
         self.create_button = QtWidgets.QPushButton(self.centralwidget)
         self.create_button.setStyleSheet("*{image: url(:/add_icon/icons8-add-24.png);\n"
-"background: #424242;\n"
+"\n"
 "border-radius: 5px;\n"
 "border: 0px solid;\n"
 "height: 32px;}\n"
 "*:hover {\n"
 "     height: 32px;\n"
 "      border: 1px solid white;\n"
-"      background: #626262;\n"
+"      \n"
 "}")
         self.create_button.setText("")
         self.create_button.setObjectName("create_button")

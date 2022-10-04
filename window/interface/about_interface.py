@@ -15,10 +15,10 @@ class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(670, 380)
-        Dialog.setStyleSheet("background:  #323232;")
+        Dialog.setStyleSheet("")
         self.tabWidget = QtWidgets.QTabWidget(Dialog)
         self.tabWidget.setGeometry(QtCore.QRect(10, 10, 651, 361))
-        self.tabWidget.setStyleSheet("*{background: #424242;\n"
+        self.tabWidget.setStyleSheet("*{\n"
 "border-radius: 5px;\n"
 "border: 0px solid;\n"
 "height: 32px;}")
