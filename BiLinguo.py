@@ -143,28 +143,34 @@ class Vocabulary(QMainWindow):
         try:
             name = self.__manage_vocab.ui.vocab_edit.text()
             if name:
-                self.__db.execute(
-                    f"CREATE TABLE \"{name}\" (\"word\" TEXT NOT NULL UNIQUE, \"translation\" TEXT NOT NULL, \"notes\" TEXT)")
-                self.__db.execute(f"""CREATE TABLE \"{name}_statistic\" (
-					\"date\"	REAL NOT NULL UNIQUE,
-					\"tests\"	INTEGER NOT NULL,
-					\"total_pts\"	INTEGER NOT NULL,
-					\"accuracy\"	REAL NOT NULL,
-					\"avg_accuracy\"	REAL NOT NULL,
-					\"total_words\"	INTEGER NOT NULL,
-					\"learned_words\"	INTEGER NOT NULL
-				)""")
-                self.__db.execute(
-                    f"CREATE TABLE \"{name}_word_repeats\" (\"word\" TEXT NOT NULL UNIQUE, \"repeats\" INTEGER NOT NULL)")
+                res = self.__db.fetchall(f"SELECT * FROM \"vocabs\" WHERE name=\"{name}\"")
+                if not res:
+                    self.__db.execute(
+                        f"CREATE TABLE \"{name}\" (\"word\" TEXT NOT NULL UNIQUE, \"translation\" TEXT NOT NULL, \"notes\" TEXT)")
+                    self.__db.execute(f"""CREATE TABLE \"{name}_statistic\" (
+                        \"date\"	REAL NOT NULL UNIQUE,
+                        \"tests\"	INTEGER NOT NULL,
+                        \"total_pts\"	INTEGER NOT NULL,
+                        \"accuracy\"	REAL NOT NULL,
+                        \"avg_accuracy\"	REAL NOT NULL,
+                        \"total_words\"	INTEGER NOT NULL,
+                        \"learned_words\"	INTEGER NOT NULL
+                    )""")
+                    self.__db.execute(
+                        f"CREATE TABLE \"{name}_word_repeats\" (\"word\" TEXT NOT NULL UNIQUE, \"repeats\" INTEGER NOT NULL)")
 
-                self.__db.execute(f"INSERT INTO vocabs VALUES (\"{name}\")")
-                self.__manage_vocab.fill_list()
+                    self.__db.execute(f"INSERT INTO vocabs VALUES (\"{name}\")")
+                    self.__manage_vocab.fill_list()
+                else:
+                    self.__msg.show(type_=QMessageBox.Information, 
+                        text="Such table already exists! Try another name.", title="Information")
             else:
                 self.__msg.show(type_=QMessageBox.Information,
                                 text=MessageText.FILL_REQUIRED_FIELDS_BEFORE_ACTION, title="Warning!")
         except Exception as e:
             self.__msg.show(type_=QMessageBox.Critical, err=e,
                             text=MessageText.AN_ERROR_OCCURED_WHILE_ACTION, title="Error!")
+        self.__manage_vocab.ui.vocab_edit.clear()
 
     def __word_add(self):
         if self.__table:
@@ -200,7 +206,7 @@ class Vocabulary(QMainWindow):
                             self.__db.execute(
                                 f"INSERT INTO \"{self.__table}\" VALUES (\"{word.text()}\", \"{translation.text()}\", \"{note.text()}\")")
                             self.__db.execute(
-                                f"INSERT INTO \"{self.__table}_word_repeats\" VALUES (\"{word}\", 0)")
+                                f"INSERT INTO \"{self.__table}_word_repeats\" VALUES (\"{word.text()}\", 0)")
                             is_word_added = True
                     else:
                         self.__msg.show(

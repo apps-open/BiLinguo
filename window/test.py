@@ -1,3 +1,4 @@
+from numpy import char
 from window.interface.test_interface import Ui_MainWindow
 from window.statistic import Statistic
 from PyQt5.QtWidgets import *
@@ -61,6 +62,12 @@ class Test(QMainWindow):
 
 	def __is_correct(self, txt):
 		if txt:
+			text = ""
+			symbs = "!@#$%^&*()-_=+/|\\,><./~`'\"1234567890№;:"
+			for chr in txt:
+				if chr not in symbs:
+					text += char
+			txt = text
 			if self.__db.current_table:
 				try:
 					request = f"SELECT * FROM \"{self.__db.current_table}\" WHERE word=\"{self.__word}\" OR translation=\"{self.__word}\""
