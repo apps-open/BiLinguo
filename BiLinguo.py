@@ -40,6 +40,7 @@ class Vocabulary(QMainWindow):
             self.__show_select_vocabulary_window)
         self.__ui.create_button.clicked.connect(
             self.__show_manage_vocabulary_window)
+        self.__translate = LibreTranslateAPI("https://translate.argosopentech.com/")
         self.__ui.delete_button.clicked.connect(self.__delete_word)
         self.__ui.add_word_button.clicked.connect(self.__word_add)
         self.__ui.change_theme_button.clicked.connect(self.__change_theme)
@@ -66,14 +67,14 @@ class Vocabulary(QMainWindow):
     def __clear_search(self):
         self.__ui.search_edit.clear()
         if self.__table:
-            self.__fill_table(request=f"SELECT * FROM \"{self.__table}\"")
+            self.__fill_table(request=f"SELECT \"word\", \"translation\", \"notes\" FROM \"{self.__table}\"")
 
     def __search(self):
         to_search = self.__ui.search_edit.text()
         if to_search:
             try:
                 if self.__table:
-                    request = f"SELECT * FROM \"{self.__table}\""
+                    request = f"SELECT \"word\", \"translation\", \"notes\" FROM \"{self.__table}\""
                     data = self.__db.fetchall(request)
                     to_fill = []
                     for tup in data:
@@ -146,7 +147,7 @@ class Vocabulary(QMainWindow):
                 res = self.__db.fetchall(f"SELECT * FROM \"vocabs\" WHERE name=\"{name}\"")
                 if not res:
                     self.__db.execute(
-                        f"CREATE TABLE \"{name}\" (\"word\" TEXT NOT NULL UNIQUE, \"translation\" TEXT NOT NULL, \"notes\" TEXT)")
+                        f"CREATE TABLE \"{name}\" (\"id\" INTEGER UNIQUE NOT NULL, \"word\" TEXT NOT NULL UNIQUE, \"translation\" TEXT NOT NULL, \"notes\" TEXT)")
                     self.__db.execute(f"""CREATE TABLE \"{name}_statistic\" (
                         \"date\"	REAL NOT NULL UNIQUE,
                         \"tests\"	INTEGER NOT NULL,
@@ -184,6 +185,7 @@ class Vocabulary(QMainWindow):
         is_word_added = False
         if self.__table:
             try:
+                id = 0
                 for row in range(self.__ui.vocabulary_table.rowCount()):
                     word = self.__ui.vocabulary_table.item(row, 0)
                     translation = self.__ui.vocabulary_table.item(row, 1)
@@ -194,7 +196,7 @@ class Vocabulary(QMainWindow):
                         request = f"SELECT word FROM \"{self.__table}\" WHERE word=\"{word.text()}\""
                         res = self.__db.fetchall(request)
                         if res and row < self.__rows:
-                            request = f"UPDATE \"{self.__table}\" SET word=\"{word.text()}\", translation=\"{translation.text()}\", notes=\"{note.text()}\" WHERE word=\"{word.text()}\""
+                            request = f"UPDATE \"{self.__table}\" SET word=\"{word.text()}\", translation=\"{translation.text()}\", notes=\"{note.text()}\" WHERE id=\"{id}\""
                             self.__db.execute(request)
                         elif res and row >= self.__rows:
                             text = f"Such word already exists in current vocabulary. To add more meanings for this word use \"note\" \
@@ -204,13 +206,14 @@ class Vocabulary(QMainWindow):
                         elif not res and row >= self.__rows:
                             self.__rows += 1
                             self.__db.execute(
-                                f"INSERT INTO \"{self.__table}\" VALUES (\"{word.text()}\", \"{translation.text()}\", \"{note.text()}\")")
+                                f"INSERT INTO \"{self.__table}\" VALUES (\"{id}\", \"{word.text()}\", \"{translation.text()}\", \"{note.text()}\")")
                             self.__db.execute(
                                 f"INSERT INTO \"{self.__table}_word_repeats\" VALUES (\"{word.text()}\", 0)")
                             is_word_added = True
                     else:
                         self.__msg.show(
                             type_=QMessageBox.Information, text=MessageText.FILL_REQUIRED_FIELDS_BEFORE_ACTION, title="Information")
+                    id += 1
                 if is_word_added:
                     self.__msg.show(type_=QMessageBox.Information,
                                     text=f"A new word(-s) added.", title="Congratulations!")
@@ -221,7 +224,7 @@ class Vocabulary(QMainWindow):
             self.__msg.show(type_=QMessageBox.Information,
                             text=MessageText.LOAD_DICTIONARY_BEFORE_ACTION, title="Information")
         if self.__table:
-            self.__fill_table(f"SELECT * FROM \"{self.__table}\"")
+            self.__fill_table(f"SELECT \"word\", \"translation\", \"notes\" FROM \"{self.__table}\"")
 
     def __fill_table(self, request="", data=None):
         if request and not data:
@@ -292,7 +295,7 @@ class Vocabulary(QMainWindow):
             self.__msg.show(type_=QMessageBox.Information,
                             text=MessageText.LOAD_DICTIONARY_BEFORE_ACTION, title="Information")
         if self.__table:
-            self.__fill_table(request=f"SELECT * FROM \"{self.__table}\"")
+            self.__fill_table(request=f"SELECT \"word\", \"translation\", \"notes\" FROM \"{self.__table}\"")
 
     def __load_vocabulary(self):
         try:
@@ -302,7 +305,7 @@ class Vocabulary(QMainWindow):
                     self.__table_close()
                 self.__table = value
                 self.__db.current_table = value
-                self.__fill_table(request=f"SELECT * FROM \"{self.__table}\"")
+                self.__fill_table(request=f"SELECT \"word\", \"translation\", \"notes\" FROM \"{self.__table}\"")
                 self.__select_vocab.close()
                 self.setWindowTitle(f"Vocabulary - \"{self.__table}\"")
             else:
@@ -314,8 +317,6 @@ class Vocabulary(QMainWindow):
 
     def __show_translate_window(self):
         self.__translate_window = Translate()
-        self.__translate = LibreTranslateAPI(
-            "https://translate.argosopentech.com/")
         langs = self.__translate.languages()
         self.__langs = {}
         for item in langs:

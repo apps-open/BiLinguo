@@ -70,7 +70,7 @@ class Test(QMainWindow):
 			txt = text
 			if self.__db.current_table:
 				try:
-					request = f"SELECT * FROM \"{self.__db.current_table}\" WHERE word=\"{self.__word}\" OR translation=\"{self.__word}\""
+					request = f"SELECT \"word\", \"translation\", \"notes\" FROM \"{self.__table}\" FROM \"{self.__db.current_table}\" WHERE word=\"{self.__word}\" OR translation=\"{self.__word}\""
 					res = self.__db.fetchall(request)
 					if self.__is_translation and fuzz.partial_ratio(res[0][0].lower(), txt.lower()) > 80:
 						print(res[0][0].lower(), txt.lower())
