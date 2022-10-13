@@ -26,37 +26,13 @@
          <widget class="QPushButton" name="info_button">
           <property name="styleSheet">
            <string notr="true">*{image: url(:/info_button/icons8-help-24.png);
-
-border-radius: 5px;
-border: 0px solid;
-height: 32px;}
-*:hover {
-     height: 32px;
-      border: 1px solid white;
-      
 }</string>
           </property>
           <property name="text">
            <string/>
           </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="change_theme_button">
-          <property name="styleSheet">
-           <string notr="true">*{image: url(:/change_theme_icon/icons8-change-theme-24.png);
-
-border-radius: 5px;
-border: 0px solid;
-height: 32px;}
-*:hover {
-     height: 32px;
-      border: 1px solid white;
-      
-}</string>
-          </property>
-          <property name="text">
-           <string/>
+          <property name="shortcut">
+           <string>Ctrl+Shift+A</string>
           </property>
          </widget>
         </item>
@@ -72,16 +48,7 @@ height: 32px;}
           <item>
            <widget class="QLineEdit" name="search_edit">
             <property name="styleSheet">
-             <string notr="true">*{
-
-border-radius: 5px;
-border: 0px solid;
-height: 32px;}
-*:hover {
-     height: 32px;
-      border: 1px solid white;
-      
-}</string>
+             <string notr="true"/>
             </property>
             <property name="placeholderText">
              <string>Enter any text to search in vocabuary...</string>
@@ -101,12 +68,6 @@ height: 32px;}
               <property name="styleSheet">
                <string notr="true">*{image: url(:/enter_icon/icons8-next-page-24.png);
 
-border-radius: 5px;
-border: 0px solid;
-height: 32px;}
-*:hover {
-     height: 32px;
-      border: 1px solid white;
       
 }</string>
               </property>
@@ -119,18 +80,14 @@ height: 32px;}
              <widget class="QPushButton" name="clear_search">
               <property name="styleSheet">
                <string notr="true">*{image: url(:/close_icon/icons8-close-24.png);
-
-border-radius: 5px;
-border: 0px solid;
-height: 32px;}
-*:hover {
-     height: 32px;
-      border: 1px solid white;
       
 }</string>
               </property>
               <property name="text">
                <string/>
+              </property>
+              <property name="shortcut">
+               <string>Esc</string>
               </property>
              </widget>
             </item>
@@ -160,17 +117,13 @@ height: 32px;}
           <property name="styleSheet">
            <string notr="true">*{image:url(:/add_icon/icons8-add-24.png);
 
-border-radius: 5px;
-border: 0px solid;
-height: 32px;}
-*:hover {
-     height: 32px;
-      border: 1px solid white;
-      
 }</string>
           </property>
           <property name="text">
            <string/>
+          </property>
+          <property name="shortcut">
+           <string>Ctrl+A</string>
           </property>
          </widget>
         </item>
@@ -178,18 +131,13 @@ height: 32px;}
          <widget class="QPushButton" name="delete_button">
           <property name="styleSheet">
            <string notr="true">*{image: url(:/delete_icon/icons8-remove-24.png);
-
-border-radius: 5px;
-border: 0px solid;
-height: 32px;}
-*:hover {
-     height: 32px;
-      border: 1px solid white;
-      
 }</string>
           </property>
           <property name="text">
            <string/>
+          </property>
+          <property name="shortcut">
+           <string>Del</string>
           </property>
          </widget>
         </item>
@@ -197,18 +145,13 @@ height: 32px;}
          <widget class="QPushButton" name="translate_button">
           <property name="styleSheet">
            <string notr="true">*{image: url(:/translate_icon/icons8-translate-24.png);
-
-border-radius: 5px;
-border: 0px solid;
-height: 32px;}
-*:hover {
-     height: 32px;
-      border: 1px solid white;
-      
 }</string>
           </property>
           <property name="text">
            <string/>
+          </property>
+          <property name="shortcut">
+           <string>Ctrl+Alt+T</string>
           </property>
          </widget>
         </item>
@@ -216,18 +159,13 @@ height: 32px;}
          <widget class="QPushButton" name="save_button">
           <property name="styleSheet">
            <string notr="true">*{image: url(:/save_icon/icons8-save-24.png);
-
-border-radius: 5px;
-border: 0px solid;
-height: 32px;}
-*:hover {
-     height: 32px;
-      border: 1px solid white;
-      
 }</string>
           </property>
           <property name="text">
            <string/>
+          </property>
+          <property name="shortcut">
+           <string>Ctrl+S</string>
           </property>
          </widget>
         </item>
@@ -235,18 +173,13 @@ height: 32px;}
          <widget class="QPushButton" name="test_button">
           <property name="styleSheet">
            <string notr="true">*{image: url(:/test_icon/icons8-pass-fail-24.png);
-
-border-radius: 5px;
-border: 0px solid;
-height: 32px;}
-*:hover {
-     height: 32px;
-      border: 1px solid white;
-      
 }</string>
           </property>
           <property name="text">
            <string/>
+          </property>
+          <property name="shortcut">
+           <string>Ctrl+T</string>
           </property>
          </widget>
         </item>
@@ -267,8 +200,14 @@ height: 30px;}
         <property name="selectionBehavior">
          <enum>QAbstractItemView::SelectItems</enum>
         </property>
-        <property name="sortingEnabled">
+        <property name="showGrid">
          <bool>true</bool>
+        </property>
+        <property name="gridStyle">
+         <enum>Qt::SolidLine</enum>
+        </property>
+        <property name="sortingEnabled">
+         <bool>false</bool>
         </property>
         <attribute name="horizontalHeaderCascadingSectionResizes">
          <bool>false</bool>
@@ -276,12 +215,23 @@ height: 30px;}
         <attribute name="horizontalHeaderStretchLastSection">
          <bool>true</bool>
         </attribute>
+        <attribute name="verticalHeaderVisible">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="verticalHeaderHighlightSections">
+         <bool>false</bool>
+        </attribute>
         <attribute name="verticalHeaderShowSortIndicator" stdset="0">
          <bool>false</bool>
         </attribute>
         <attribute name="verticalHeaderStretchLastSection">
          <bool>false</bool>
         </attribute>
+        <column>
+         <property name="text">
+          <string/>
+         </property>
+        </column>
         <column>
          <property name="text">
           <string>Word</string>
@@ -305,18 +255,13 @@ height: 30px;}
          <widget class="QPushButton" name="load_button">
           <property name="styleSheet">
            <string notr="true">*{image: url(:/load_icon/icons8-download-24.png);
-
-border-radius: 5px;
-border: 0px solid;
-height: 32px;}
-*:hover {
-     height: 32px;
-      border: 1px solid white;
-      
 }</string>
           </property>
           <property name="text">
            <string/>
+          </property>
+          <property name="shortcut">
+           <string>Ctrl+O</string>
           </property>
          </widget>
         </item>
@@ -324,18 +269,13 @@ height: 32px;}
          <widget class="QPushButton" name="close_button">
           <property name="styleSheet">
            <string notr="true">*{image: url(:/close_icon/icons8-close-24.png);
-
-border-radius: 5px;
-border: 0px solid;
-height: 32px;}
-*:hover {
-     height: 32px;
-      border: 1px solid white;
-      
 }</string>
           </property>
           <property name="text">
            <string/>
+          </property>
+          <property name="shortcut">
+           <string>Ctrl+B</string>
           </property>
          </widget>
         </item>
@@ -349,18 +289,13 @@ height: 32px;}
           </property>
           <property name="styleSheet">
            <string notr="true">*{image: url(:/edit_icon/icons8-edit-24.png);
-
-border-radius: 5px;
-border: 0px solid;
-height: 32px;}
-*:hover {
-     height: 32px;
-      border: 1px solid white;
-      
 }</string>
           </property>
           <property name="text">
            <string/>
+          </property>
+          <property name="shortcut">
+           <string>Ctrl+E</string>
           </property>
          </widget>
         </item>
@@ -370,6 +305,7 @@ height: 32px;}
     </item>
    </layout>
   </widget>
+  <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <resources>
   <include location="resource/src.qrc"/>
